@@ -1,10 +1,11 @@
 #include <stdio.h>
 
+/**
+ * main - Prints a string with printf
+ *
+ * Return: 0 if program executed successfully
+ */
 int main(void)
 {
-	/* Use the printf function to print the desired message */
-	printf("with proper grammar, but the outcome is a piece of art, \n");
-
-	/* Return 0 to indicate successful program execution */
-	return o;
-}
+	printf("with proper grammar, but the outcome is a piece of art,\n");
+	return (0);
