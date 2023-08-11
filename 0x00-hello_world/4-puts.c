@@ -1,9 +1,9 @@
-#!/bin/bash
 #include <stdio.h>
+
 /**
- * main - Entry point
+ * main - Prints a string with puts
  *
- * Return: Always 0 (success)
+ * Return: 0 if program executed successfully
  */
 int main(void)
 {
