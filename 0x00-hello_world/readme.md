@@ -1,1 +1,1 @@
-this project is about C programing and how to run c files 
+this project is about C programing language and how to exercute and write in C language 
