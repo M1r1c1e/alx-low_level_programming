@@ -1,22 +1,21 @@
 #include <stdio.h>
 
 /**
- * main - main function
- *
- * Return: Always 0
- */
-
+  * main - Prints the numbers since 0 to 9
+  *
+  * Return: Always (Success)
+  */
 int main(void)
 {
-	char c;
+	char n;
 
-	for (c = 0; c <= 9; c++)
-
+	for (n = '0'; n <= '9'; n++)
 	{
-	putchar(c);
+		putchar(n);
 	}
 
 	putchar('\n');
 
 	return (0);
 }
+
