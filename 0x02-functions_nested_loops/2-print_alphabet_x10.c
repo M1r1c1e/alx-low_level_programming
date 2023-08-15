@@ -2,26 +2,21 @@
 
 /**
  * print_alphabet_x10 - print 10 times the alphabet in lowercase
- *
- * Return:void
+ * Return: void
  */
-void print_alphabet_x10(void);
+void print_alphabet_x10(void)
+
 {
-	char o;
+	char c;
+	int k = 0;
 
-	for (int m = 0; m < 10; m++)
+	while (k <= 9)
 	{
-		o = 'a';
-
-	while (o < 'z')
+	for (c = 'a'; c <= 'z'; c++)
 	{
-		_putchar(o);
-
-		o++;
-
+	_putchar(c);
 	}
-
-	}
-
 	_putchar('\n');
+	k++;
+	}
 }
