@@ -15,13 +15,10 @@ int _strlen(char *s)
 	bk = 0;
 
 	while (s[bk] != '\0')
-
 	{
-
 		bk++;
 
 	}
-
 	return (bk);
 
 }
@@ -43,24 +40,16 @@ char *_strcpy(char *dest, char *src)
 	dim = 0;
 
 	while (src[dim] != '\0')
-
 	{
-
 		dim++;
 
 	}
-
-
 	for (bk = 0; bk < dim; bk++)
-
 	{
-
 		dest[bk] = src[bk];
 
 	}
-
 	dest[bk] = '\0';
-
 
 	return (dest);
 
@@ -78,14 +67,11 @@ char *_strcpy(char *dest, char *src)
 dog_t *new_dog(char *name, float age, char *owner)
 {
 	dog_t *dog;
-
 	int dim31, dim22;
-
 
 	dim31 = _strlen(name);
 
 	dim22 = _strlen(owner);
-
 
 	dog = malloc(sizeof(dog_t));
 
@@ -93,26 +79,18 @@ dog_t *new_dog(char *name, float age, char *owner)
 
 		return (NULL);
 
-
-
 	dog->name = malloc(sizeof(char) * (dim31 + 1));
 
 	if (dog->name == NULL)
-
 	{
-
 		free(dog);
 
 		return (NULL);
-
 	}
-
 	dog->owner = malloc(sizeof(char) * (dim22 + 1));
 
 	if (dog->owner == NULL)
-
 	{
-
 		free(dog);
 
 		free(dog->name);
