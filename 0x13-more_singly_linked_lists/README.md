@@ -14,7 +14,7 @@ This project is about;
 
 5. Writing a function that frees a listint_t list.
 
-6. Writing a function that deletes the head node of a listint_t linked list, 
+6. Writing a function that deletes the head node of a listint_t linked list,
 and returns the head node’s data (n).
 
 7. Writing a function that returns the nth node of a listint_t linked list.
