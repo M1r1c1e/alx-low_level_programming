@@ -3,28 +3,48 @@
 #include <stdlib.h>
 
 /**
- * print_listint_safe - Printing a listint_t linked list with loop handling.
- * @head: Pointer to head of the list.
+ * print_listint_safe - Prints a listint_t linked list with loop handling.
+ * @head: Pointer to the head of the list.
  *
- * Return: The total of nodes in the list.
+ * Return: The number of nodes in the list.
  */
 size_t print_listint_safe(const listint_t *head)
 {
+	const listint_t *current = head;
 	size_t count = 0;
-	const listint_t *miraslow = head, *mirafast = head;
+	int loop_detected = 0;
+	const listint_t *visited[10000];
+	size_t i;
 
-	while (miraslow != NULL && mirafast != NULL && mirafast->next != NULL)
+	for (i = 0; i < 10000; i++)
+		visited[i] = NULL;
+
+	while (current != NULL)
 	{
-		printf("[%p] %d\n", (void *)miraslow, miraslow->n);
-		count++;
-		miraslow = miraslow->next;
-		mirafast = mirafast->next->next;
+		visited[count % 10000] = current;
 
-		if (miraslow == mirafast)
+		printf("[%p] %d\n", (void *)current, current->n);
+		count++;
+
+		current = current->next;
+
+		for (i = 0; i < count % 10000; i++)
 		{
-			printf("-> [%p] %d\n", (void *)miraslow, miraslow->n);
-			exit(98);
+			if (visited[i] == current)
+			{
+				loop_detected = 1;
+				break;
+			}
 		}
+
+		if (loop_detected)
+			break;
+	}
+
+	if (loop_detected)
+	{
+		printf("-> [%p] %d\n", (void *)current, current->n);
+		exit(98);
 	}
 
 	return (count);
