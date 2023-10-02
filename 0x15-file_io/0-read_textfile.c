@@ -1,53 +1,54 @@
-#include <stdio.h>
+#include <fcntl.h>
+#include <unistd.h>
 #include <stdlib.h>
 
 /**
  * read_textfile - Reads and prints a text file to standard output
- * @input_filename: The name of the file to read
- * @max_letters: The maximum number of letters to read and print
+ * @filename: The name of the file to read
+ * @letters: The number of letters to read and print
  *
  * Return: The actual number of letters read and printed,
  *         or 0 if an error occurred
  */
-ssize_t read_textfile(const char *input_filename, size_t max_letters)
+ssize_t read_textfile(const char *filename, size_t letters)
 {
-	FILE *file;
+	int file_descriptor;
 	char *content_buffer;
-	size_t read_count, write_count;
+	ssize_t bytes_read, bytes_written;
 
-	if (input_filename == NULL)
+	if (filename == NULL)
 		return (0);
 
-	file = fopen(input_filename, "r");
-	if (file == NULL)
+	file_descriptor = open(filename, O_RDONLY);
+	if (file_descriptor == -1)
 		return (0);
 
-	content_buffer = (char *)malloc(sizeof(char) * (max_letters + 1));
+	content_buffer = (char *)malloc(sizeof(char) * (letters + 1));
 	if (content_buffer == NULL)
 	{
-		fclose(file);
+		close(file_descriptor);
 		return (0);
 	}
 
-	read_count = fread(content_buffer, sizeof(char), max_letters, file);
+	bytes_read = read(file_descriptor, content_buffer, letters);
 
-	if (read_count == 0)
+	if (bytes_read == -1)
 	{
 		free(content_buffer);
-		fclose(file);
+		close(file_descriptor);
 		return (0);
 	}
 
-	content_buffer[read_count] = '\0';
+	content_buffer[bytes_read] = '\0';
 
-	write_count = fwrite(content_buffer, sizeof(char), read_count, stdout);
+	bytes_written = write(STDOUT_FILENO, content_buffer, bytes_read);
 
 	free(content_buffer);
-	fclose(file);
+	close(file_descriptor);
 
-	if (write_count != read_count)
+	if (bytes_written != bytes_read)
 		return (0);
 
-	return (read_count);
+	return (bytes_read);
 }
 
