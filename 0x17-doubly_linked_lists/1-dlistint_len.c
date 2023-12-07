@@ -9,7 +9,7 @@
  */
 size_t dlistint_len(const dlistint_t *h)
 {
-	int incree
+	int incree;
 
 	incree = 0;
 
