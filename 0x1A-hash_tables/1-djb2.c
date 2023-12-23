@@ -4,7 +4,7 @@
  * hash_djb2 - Hash function implementing the djb2 algorithm.
  * @str: the hash string
  *
- * Return: the calculated hash number 
+ * Return: the calculated hash number
  */
 unsigned long int hash_djb2(const unsigned char *str)
 {
