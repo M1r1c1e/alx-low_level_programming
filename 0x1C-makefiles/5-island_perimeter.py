@@ -1,28 +1,26 @@
 #!/usr/bin/python3
-""" Grid Mobule """
+"""Defining the function `island_perimeter`"""
 
 
 def island_perimeter(grid):
-    """ looks for any islands inside grid and calculates it's perimeter """
-    width = 0
-    height = 0
-    height_idx = 0
-    for i in range(len(grid)):
-        j = height_idx
-        for j in range(len(grid[i])):
-            if grid[i][j] == 1:
-                if grid[i][j+1] == 1:
-                    width += 1
-                    continue
-                elif grid[i+1][j] == 1:
-                    height += 1
-                    height_idx = j
-                    break
-                else:
-                    if width == 0 and grid[i][j-1] == 1:
-                        j = 0
-                        continue
-                    width += 1
-                    height += 1
-                    break
-    return (width + height) * 2
+    """Returning the perimeter of the island described in grid"""
+    col_size = len(grid[0])
+    row_size = len(grid)
+    perimeter = 0
+
+    for row in range(row_size):
+        for col in range(col_size):
+            if grid[row][col]:
+                # check left-border
+                if col - 1 < 0 or grid[row][col - 1] == 0:
+                    perimeter += 1
+                # check right-border
+                if col + 1 == col_size or grid[row][col + 1] == 0:
+                    perimeter += 1
+                # check top-border
+                if row - 1 < 0 or grid[row - 1][col] == 0:
+                    perimeter += 1
+                # check bottom-border
+                if row + 1 == row_size or grid[row + 1][col] == 0:
+                    perimeter += 1
+    return perimeter
